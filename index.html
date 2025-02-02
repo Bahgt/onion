@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X-FIGHTER</title>
+    <link rel="icon" href="weblogo.png" type="image/x-icon">
+
+    <style>
+        @font-face {
+  font-family: "Silkscreen";
+  src: url(slkscr.ttf);
+}
+
+body {
+  font-family: "Silkscreen";
+}
+        /* General Reset */
+        body {
+            margin: 0;
+            line-height: 1.6;
+            color: #fff;
+                            cursor: url('cursor.png'), auto;
+
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header */
+        header {
+            background-color: rgb(37 10 103 / 80%); /* Partially transparent */
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: -100px;
+            z-index: 10;
+            animation: slideDown 1s forwards;
+        }
+
+        @keyframes slideDown {
+            from {
+                top: -100px;
+            }
+            to {
+                top: 0;
+            }
+        }
+
+        .logo {
+            font-size: 1.5em;
+
+            font-weight: bold;
+            position: relative;
+        }
+
+ 
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+
+        }
+
+        .nav-links a {
+            color: #fff;
+            padding: 5px 10px;
+            transition: background-color 0.3s;
+
+        }
+
+        .nav-links a:hover {
+            background-color: black;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+                min-height: 100vh; /* Ensures enough space */
+    overflow: hidden; /* Prevents unexpected scrolling */
+        background-color: black;
+
+
+
+        }
+        /* Partial Background Image */
+.hero-before {
+    content: "";
+    position: absolute;
+    top: 20%; /* Adjust vertical position */
+    left: 10%; /* Adjust horizontal position */
+    width: 677px; /* Adjust image width */
+    height: 342px; /* Adjust image height */
+    background-image: url('cmd.png'); /* Replace with your actual image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.8; /* Optional: Adjust transparency */
+    animation: glitchEffect 2s infinite steps(1);
+
+}
+
+/* Keyframes for switching images */
+@keyframes glitchEffect {
+    0% { background-image: url('cmd.png'); transform: translate(0, 0); }
+    10% { background-image: url('cmd1.png'); transform: translate(2px, -2px); }
+    20% { background-image: url('cmd2.png'); transform: translate(-2px, 2px); }
+    30% { background-image: url('cmd3.png'); transform: translate(3px, -3px); }
+    40% { background-image: url('cmd4.png'); transform: translate(-3px, 3px); }
+    50% { background-image: url('cmd5.png'); transform: translate(1px, -1px); }
+    60% { background-image: url('cmd6.png'); transform: translate(-1px, 1px); }
+    70% { background-image: url('cmd.png'); transform: translate(0, 0); }
+    100% { background-image: url('cmd.png'); transform: translate(0, 0); }
+}
+
+        .hero h1 {
+            font-size: 2.5em;
+            z-index: 1;
+            animation: slideUp 1.5s;
+                  margin-top: 113px;
+
+
+
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin: 20px 0;
+            z-index: 1;
+            animation: slideUp 1.5s;
+
+        }
+
+        .hero button {
+            background-color: #099000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            z-index: 1;
+            animation: slideUp 1.5s;
+                margin-top: 30px;
+
+
+        }
+
+        .hero button:hover {
+            background-color: #3bd031;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Sections */
+        .section {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #1a1a1a;
+        }
+
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: white;
+
+        }
+                .section h3 {
+        
+
+        }
+
+        .section p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+
+        }
+
+        .services {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+
+        }
+
+        .service {
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            width: 100%;
+            max-width: 250px;
+            text-align: center;
+            background-color: #222;
+            transition: box-shadow 0.3s;
+
+        }
+
+        .service:hover {
+            box-shadow: 0 4px 8px rgba(0, 255, 0, 0.5);
+        }
+
+        /* Projects Section */
+        .projects {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .project {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 255, 0, 0.5);
+            transition: transform 0.3s;
+        }
+
+        .project img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .project:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background-color: black;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #007BFF;
+            font-weight: bold;
+        }
+        /* Hamburger Icon */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+                background-color: black;
+
+
+}
+
+.hamburger .bar {
+    width: 30px;
+    height: 5px;
+    background-color: #fff;
+    border-radius: 3px;
+}
+
+/* Menu Toggle - Hide nav by default on mobile */
+.menu-toggle {
+    display: none;
+}
+
+/* Media Query for Smaller Screens */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        background-color: rgba(26, 26, 26, 0.8);
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 10px;
+    }
+
+    /* Show nav when the checkbox is checked */
+    .menu-toggle:checked + label + .nav-links {
+        display: flex;
+    }
+
+    /* Show hamburger icon */
+    .hamburger {
+        display: flex;
+    }
+}
+ .container {
+            margin-top: 50px;
+                        z-index: 1;
+                         animation: slideUp 1.5s;
+                         width: 100%;
+  height: 100%;
+
+
+
+
+        }
+        .toggle-input {
+            display: none;
+        }
+        .cards {
+            display: none;
+            margin-top: 10px;
+            justify-content: center;
+            gap: 10px;
+                max-height: 99vh; /* Prevents going outside the hero section */
+                        margin-top: 35px;
+                                margin-bottom: 35px;
+
+
+
+
+        }
+        .toggle-input:checked + .cards {
+            display: flex;
+
+
+        }
+        .card {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 90%;
+            max-width: 200px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+
+
+        }
+                .toggle-input:checked + .cards {
+            display: flex;
+        }
+        .toggle-input:checked + .cards .card {
+            animation: slideUp 1s ease-in-out forwards;
+        }
+        .card img {
+            width: 50px;
+            height: 50px;
+        }
+        .btn {
+  background-color: #099000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+            z-index: 1;
+            animation: slideUp 1.5s;
+                margin-top: 30px;
+        }
+                .btn:hover {
+            background-color: #3bd031;
+        }
+        @media (max-width: 768px) {
+            .cards {
+                flex-direction: column;
+                align-items: center;
+                                    overflow-y: overlay;
+
+
+
+            }
+        }
+        @media (min-width: 769px) {
+            .cards {
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+
+            }
+            .card {
+                width: 200px;
+            }
+        }
+        @media (max-width: 768px) {
+    .card {
+        width: 90%; /* Makes cards fit well on smaller screens */
+    }
+}
+
+
+.empty{
+        height: 50px;
+    border: 1px solid #ccc;
+    width: auto;
+    min-height: 25vh;
+}
+
+.weblogo{
+        width: 70px;
+    position: absolute;
+    margin-left: -1px;
+    z-index: -2;
+}
+
+.xmr-message {
+    position: fixed;
+    left: 50%; /* Center horizontally */
+    bottom: 0; /* Start at the bottom of the screen */
+    transform: translateX(-50%); /* Adjust to center horizontally */
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Ensure content is centered inside */
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(255, 165, 0, 0.5);
+    opacity: 0;
+    animation: slideMessage 4s ease-in-out forwards;
+}
+
+
+/* XMR Logo */
+.xmr-message img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+/* Animation - Slide Up, Stay, Slide Down (Once) */
+@keyframes slideMessage {
+    0% { transform: translateX(-50%) translateY(100px); opacity: 0; }
+    20% { transform: translateX(-50%) translateY(0); opacity: 1; } /* Slide Up */
+    80% { transform: translateX(-50%) translateY(0); opacity: 1; } /* Stay for 2s */
+    100% { transform: translateX(-50%) translateY(100px); opacity: 0; } /* Slide Down */
+}
+
+/* Delay before showing message */
+.xmr-message {
+    animation-delay: 1s; /* Delay before the animation starts */
+}
+
+
+/* Items Section */
+.items-section {
+    padding: 40px 20px;
+    background-color: rgb(0 0 0 / 80%);
+    text-align: center;
+
+}
+
+.items-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Container for all items */
+.items-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center items in the container */
+    gap: 30px; /* Space between items */
+}
+
+/* Each item */
+.item {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 280px; /* Limit the max width */
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for item */
+.item:hover {
+    transform: translateY(-5px); /* Lift the item slightly on hover */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Enhance shadow on hover */
+}
+
+/* Item Image */
+.item-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* Item Info (Name & Price) */
+.item-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.item-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 1.2rem;
+    color: #ff7f50; /* Warm color for price */
+    font-weight: bold;
+}
+
+/* Responsive Design for Mobile Devices */
+@media (max-width: 768px) {
+    .item {
+        max-width: 100%; /* Full width on smaller screens */
+    }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 20px;
+  width: 200px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.card h3 {
+  color: white;
+  font-size: 16px;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 150px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 120px;
+    height: 100px;
+  }
+}
+
+.seemore {
+    padding: 20px;
+}
+
+    </style>
+
+</head>
+<body>
+    <header>
+<a href="index.html">
+  <div class="logo">X-FIGHTER</div>
+</a>
+<img src="weblogo.png" alt="Service 1" class="weblogo">
+        <!-- Input checkbox for hamburger toggle -->
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </label>
+        
+        <!-- Navigation Links -->
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="items.html">Items</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+    <section class="hero" >
+       
+        <div class="hero-before" >
+   
+</div>
+
+        <h1>WELCOME TO THE X-FIGHTER</h1>
+        <p>STAY ANONYMOUS WITH US</p>
+        <div class="xmr-message">
+    <img src="xmr.png" alt="XMR Logo">
+    <span>We accept XMR</span>
+</div>
+
+
+    </section>
+
+
+    <section id="services" class="section">
+        <h2>What we offer?</h2>
+    
+<div class="card-container">
+  <div class="card"><h3>1. DDoS Attacks </h3></div>
+  <div class="card"><h3>2. Data Breaching</h3></div>
+  <div class="card"><h3>3. Account Hijacking</h3></div>
+  <div class="card"><h3>4. Phishing Services</h3></div>
+  <div class="card"><h3>5. Keylogging</h3></div>
+  <div class="card"><h3>6. Ransomware Deployment</h3></div>
+  <div class="card"><h3>7. Carding and Fraud</h3></div>
+  <div class="card"><h3>8. Crypto </h3></div>
+  <div class="card"><h3>9. Network Testing</h3></div>
+  <div class="card"><h3>10. Social Engineering Attacks</h3></div>
+  <div class="card"><h3>11. Zero-Day Exploits</h3></div>
+  <div class="card"><h3>12. Spyware Installation</h3></div>
+  <div class="card"><h3>13. Impersonation</h3></div>
+  <div class="card"><h3>14. Website Defacement</h3></div>
+  <div class="card"><h3>15. Blackmail and Extortion</h3></div>
+  <div class="card"><h3>16. SIM Swapping</h3></div>
+</div>
+    </section>
+
+ <section id="items" class="items-section">
+    <h2>items and sales</h2>
+    <div class="items-container">
+        <div class="item">
+            <a href="keylogger.html">
+                <div class="item-image">
+                    <img src="keylogger.jpg" alt="Item 1">
+                </div>
+                <div class="item-info">
+                    <h3>keylogger</h3>
+                    <p class="price">$100</p>
+                </div>
+            </a>
+        </div>
+        <div class="item">
+            <a href="RAT.html">
+                <div class="item-image">
+                    <img src="RAT.jpg" alt="Item 2">
+                </div>
+                <div class="item-info">
+                    <h3>RAT malware</h3>
+                    <p class="price">$199</p>
+                </div>
+            </a>
+        </div>
+        <!-- More items here -->
+        <div class="item">
+            <a href="pegasus.html">
+                <div class="item-image">
+                    <img src="pegasus.png" alt="Item 3">
+                </div>
+                <div class="item-info">
+                    <h3>Pegasus Spyware</h3>
+                    <p class="price">$999</p>
+                </div>
+            </a>
+        </div>
+            <a class="seemore" href="items.html">See more ></a>
+
+    </div>
+
+
+
+</section>
+
+
+    <section id="about" class="section">
+        <h2>About Us</h2>
+        <p>We are a team of experienced hackers and pentesters dedicated to providing secure, reliable, and innovative services for the dark web community. Whatever you need,we have you covered.</p>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Contact Us</h2>
+        <p>Have questions or need help? Reach out to us anytime.</p>
+        <p>Email: <a href="mailto:x-fighter@underworld.dog">x-fighter@underworld.dog</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Onion Services. All rights reserved. | <a href="#">Privacy Policy</a></p>
+    </footer>
+</body>
+</html>
